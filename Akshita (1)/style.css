@@ -2,6 +2,15 @@
     margin-top: -6px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            px;
 }
 
+.carousel-item-next, .carousel-item-prev, .carousel-item.active {
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+.mdb-color.lighten-3 {
+    background-color: rgb(43,43, 42 ) !important;
+}
 .hovereffect {
   width: 100%;
   height: 100%;
