@@ -1,3 +1,5 @@
+
+
 #icon{
     margin-top: -6px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            px;
 }
@@ -98,4 +100,12 @@
 .hovereffect:hover a.info {
   -webkit-transition-delay: .2s;
   transition-delay: .2s;
+}
+
+#app{
+  color: red; 
+}
+
+nav .navbar .navbar-brand a{
+  color: red;
 }

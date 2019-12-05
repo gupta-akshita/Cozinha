@@ -24,41 +24,48 @@
         <!--Fontawesome CDN-->
         <script src="https://use.fontawesome.com/eddcece49c.js"></script>
                     
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>                
     <title>Yummy, Cohinzo Food</title>                                                        
   </head>
   <body>                                                                                                   
-    <nav class="navbar navbar-expand-lg navbar-light " style="border-bottom:1px solid #e0e0e0;background:white; padding-top: 10px; padding-bottom: 10px; box-shadow: 0px 0px 5px 0px rgba(5, 10, 20, 0.2); position: fixed; z-index: 5000; width: 100%; margin-top: -0px;" >
-            <div class="container">
-                <a class="navbar-brand" href="#"><img src="img/logo1.jpg" href="index.html" height="40px" width="45px"> Cohinzo</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-               <ul class="navbar-nav mr-auto">
+    <div id="app" class="container-fluid">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><strong>Cohinzo</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarNavDropdown" class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#"><img id= "icon" href="#" src="img/home-solid.svg" height="18px" width="20px">  Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link ml-3" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><img id= "icon" href="#" src="img/percentage-solid.svg" height="18px" width="20px" style="margin-right: 2px;">Offers</a>
+                    <a class="nav-link ml-3" href="#">Contact us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><img id= "icon" href="#" src="img/help.svg" height="18px" width="20px" style="margin-right: 5px; ">Help</a>
+                    <a class="nav-link ml-3" href="#">Party & Birthday</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true"><img id= "icon" href="#" src="img/sign-in-alt-solid.svg" height="18px" width="20px" style="margin-right: 5px;"><strong>Log In</strong></a>
+                    <a class="nav-link ml-3" href="#">Spin and Win</a>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/login') }}"><strong>Welcome, Dharmik! </strong></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true"><img id= "icon" href="#" src="img/user-plus-solid.svg" height="18px" width="20px" style="margin-right: 5px;"><strong>Sign Up</strong></a>
+                    <a class="nav-link" href="{{ url('/login') }}">Login</a>
                 </li>
-                </ul>
-                </form>
-            </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/register') }}">Register</a>
+                </li>
+            </ul>
         </div>
     </nav>
+</div>
     <br><br>
 
     <div class="container-fluid my-4" style="background:#171A29; margin-bottom: 25px; margin-top: 25px;">
@@ -110,7 +117,7 @@
 
           <div class="row mb-18 mt-18">
             <div class="col-md-3 clearfix d-none d-md-block">
-              <div class="card mb-3 mt-2">
+              <div class="card mb-2 mt-2">
                 <img class="card-img-top" src="img/offer/offer5.jpeg"
             alt="Card image cap">
               </div>
@@ -267,14 +274,18 @@
             <div class="col-md-3">
                 <div class="m-1">
                     <a href="#" style="text-decoration: none;color:black">
-                        <div class="card" style="width: 100%">
-                            <img src="img/ElTesoro.jpg" class="card-img-top" alt="...">
-                            <div class="card-body py-1">
-                                <p class="card-text mb-0" style="font-size:130%">El Tesoro</p>
+                        <div class="card view overlay" style="width: 100%">
+                            <img src="img/ElTesoro.jpg" class="card-img-top img-fluid" alt="...">
+                            <div class="card-body py-1 mask flex-center rgba-red-strong">
                                 <p class="mb-0" style="font-size:90%">South Indian</p>
                                 <p class="mb-0">45min | 450/-</p>
                             </div>
+
                         </div>
+                        <div class="card">
+                            <p class="card-text mb-0" style="font-size:130%">El Tesoro</p>
+                        </div>
+
                     </a>
                 </div>
             </div>
@@ -351,6 +362,41 @@
             
         </div>
     </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">Navbar</a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<div class="d-flex flex-row bd-highlight">
+  <div class="p-3 bd-highlight">Flex item 1</div>
+  <div class="p-3 bd-highlight">Flex item 2</div>
+  <div class="p-3 bd-highlight">Flex item 3</div>
+</div>
+<div class="d-flex flex-row-reverse bd-highlight">
+  <div class="p-2 bd-highlight">Flex item 1</div>
+  <div class="p-2 bd-highlight">Flex item 2</div>
+  <div class="p-2 bd-highlight">Flex item 3</div>
+</div>
 
 <!-- Footer -->
 <footer class="page-footer font-small pt-2"
