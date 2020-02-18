@@ -1,0 +1,317 @@
+{% load static %}
+{% load cart_total_items %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- Required meta tags -->
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <link rel="shortcut icon" href="logo1.jpg" />
+     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">                                             <!-- Bootstrap CSS -->
+     <!-- Font Awesome -->
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+     <!-- Bootstrap core CSS -->
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+     <!-- Material Design Bootstrap -->
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+         <!-- JQuery -->
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+     <!-- Bootstrap tooltips -->
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+     <!-- Bootstrap core JavaScript -->
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+     <!-- MDB core JavaScript -->
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script> 
+         <!--Fontawesome CDN-->
+         <script src="https://use.fontawesome.com/eddcece49c.js"></script>
+                     
+ 
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>           
+ 
+ 
+ 
+     <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
+     <title>Yummy, Cozihna Food</title>      
+</head>
+<body>
+
+   
+    <div id="app" class="container-fluid">
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+          
+          <div id="navbarNavDropdown" class="navbar-collapse collapse">
+              <ul class="navbar-nav mr-auto nav-link-hover">
+                <li class="nav-item mr-3 ml-3">
+                  <a href="{% url 'index' %}">
+                    <img src="{% static 'img/logo1.jpg' %}" alt="logo" height="35px" width="40px">
+                  </a>
+                </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'index' %}"><i class="fa fa-home mr-1"></i> Home</a>
+                  </li>
+                  &nbsp;
+                  <li class="nav-item">
+                      <a class="nav-link" href="#"><i class="fa fa-phone mr-1"></i> Contact us</a>
+                  </li>
+                  &nbsp;
+                  <li class="nav-item">
+                      <a class="nav-link" href="#"><i class="fa fa-gift mr-1"></i> Party & Birthday </a>
+                  </li>
+                  &nbsp;
+                  <li class="nav-item">
+                      <a class="nav-link" href="#"><i class="fa fa-spinner mr-1"></i> Spin and Win</a>
+                  </li>
+  
+              </ul>
+              <ul class="navbar-nav">
+      {% if user.is_authenticated %}
+                  <li class="nav-item dropdown mr-3">
+                        <a class="dropdown nav-link dropbutton mr-2">
+                          
+                            <i class="fa fa-user " style="font-size: 18px;"></i>
+                              {{user.first_name}}
+                        </a>
+                          <div class="dropdown-content">
+                            <a href="{% url 'logout' %}">Logout</a>
+                          </div>
+                  </li>
+                  {% else %}
+                      <li class="nav-item">
+                          <a class="nav-link" href="{% url 'signin' %}">Login</a>
+                      </li>
+                      &nbsp;
+                      <li class="nav-item">
+                          <a class="nav-link" href="{% url 'signup' %}"><b>Register</b></a> 
+                      </li>
+                      &nbsp;
+                      {% endif %}
+                      <li class="nav-item">
+                      <a class="nav-link" href="{% url 'cart' %}" style="border: 1px solid black; border-radius: 3px; ">
+                        <img src="{% static 'img/shopping-cart.png' %}" style="height: 22px; width: 22px;"> Cart <span class="badge badge-success mt-1" id="items">{% cart_total_items request as allitems %}{{allitems}}</span></a>  
+                      </li>  
+              </ul>
+          </div>
+      </nav>
+  </div>
+            
+<br><br>
+
+{% block content %}
+{% endblock %}
+
+<footer class="page-footer font-small pt-2"
+ style="background-color: rgb(43, 43, 42);font-weight: normal;">
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left"">
+  
+      <!-- Grid row -->
+      <div class="row">
+  
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1 " >
+  
+          <!-- Content -->
+          <h5 class="text-uppercase mb-4">Company</h5>
+          <ul class="list-unstyled">
+            <li>
+              <p>
+                <a href="#!">About us</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#!">Team</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#!">Careers</a>
+              </p>
+            </li>
+            </ul>
+  
+        </div>
+        <!-- Grid column -->
+  
+        <!-- <hr class="clearfix w-100 d-md-none"> -->
+  
+        <!-- Grid column -->
+        
+        <!-- Grid column -->
+  
+        <!-- <hr class="clearfix w-100 d-md-none"> -->
+  
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-6 mx-auto my-md-4 my-0 mt-4 mb-1">
+  
+          <!-- Contact details -->
+          <h5 class="text-uppercase mb-4">Address</h5>
+  
+          <ul class="list-unstyled">
+            <li>
+              <p>
+                <i class="fas fa-home mr-3"></i>H-447, Sadhna Niwas, Phagwara</p>
+            </li>
+            <li>
+              <p>
+                <i class="fas fa-envelope mr-3"></i> diwakarsharma2197@gmail.com</p>
+            </li>
+            <li>
+              <p>
+                <i class="fas fa-phone mr-3"></i> +91 912 0074 680</p>
+            </li>
+            <li>
+              <p>
+                <i class="fas fa-print mr-3"></i> +91 858 6991 996</p>
+            </li>
+          </ul>
+  
+        </div>
+        <!-- Grid column -->
+  
+        <!-- <hr class="clearfix w-100 d-md-none"> -->
+  
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+  
+          <!-- Links -->
+          <h5 class=" text-uppercase mb-4">Deliver To</h5>
+  
+            <ul class="list-unstyled">
+            <li>
+              <p>
+                <a href="#!">Girls Hostel 1 to 4</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#!">Boys Hostel 1 to 8</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#!">Chaheru</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#!">Law Gate</a>
+              </p>
+            </li>
+            </ul>
+  
+        </div>
+        <!-- Grid column -->
+  
+      </div>
+        <div class="mb-3 flex-center">
+
+          <!-- Facebook -->
+          <a class="fb-ic">
+            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!-- Twitter -->
+          <a class="tw-ic">
+            <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!-- Google +-->
+          <a class="gplus-ic">
+            <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!--Linkedin -->
+          <a class="li-ic">
+            <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!--Instagram-->
+          <a class="ins-ic">
+            <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+        </div>
+    </div>
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">
+        Designed and Developed By
+      <a href="https://github.com/gupta-akshita"> Akshita Gupta </a> & 
+      <a href="https://github.com/dharmikpopat"> Dharmik Popat</a>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  {% csrf_token %}
+
+  <!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script
+src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script>
+        $(document).ready(function(){
+          function sending(id, quantity, token){
+              let fd = new FormData();
+              fd.append('id', id)
+              fd.append('count', quantity)
+              fd.append('csrfmiddlewaretoken', token)
+              $.ajax({
+                  type : 'POST',
+                  url : '{% url "updating" %}',
+                  data : fd,
+                      contentType: false,
+                      processData: false,
+                  success : function(response) {
+                      getting()
+                      console.log("resp", response.message);
+                  }
+              })
+          }
+          
+          function getting(){
+              $.ajax({                
+                  type : 'GET',
+                  url : '{% url "getting" %}',
+                  success : function(response) {
+                    document.getElementById('items').innerHTML = response.total_items
+                  }
+              })
+          }
+
+          $(".plus").click(function(e){
+              let count_field = $("#val_" + $(this).attr('data-id'))
+              let count = parseInt(count_field.text())             
+              count +=1  
+              count_field.text(count);
+              let id_url = $(this).attr('data-id')
+              let token = $("input[name=csrfmiddlewaretoken]").val();
+              sending(id_url, count, token)
+              
+          });
+          $(".minus").click(function(e){
+              let count_field = $("#val_" + $(this).attr('data-id'))
+              let count = parseInt(count_field.text())
+              if(count > 0){
+                  count -= 1
+                  count_field.text(count);
+                  let id_url = $(this).attr('data-id')
+                  let token = $("input[name=csrfmiddlewaretoken]").val();
+                  sending(id_url, count, token)
+                  
+              }
+          });
+
+          
+        });
+
+      
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+<div class="container-fluid my-4" style="background:#171A29; margin-bottom: 25px; margin-top: 25px;">
+    <!--Carousel Wrapper-->
+    <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox">
+
+        <!--First slide-->
+        <div class="carousel-item active" style="margin-top: 20px; margin-bottom: 20px;">
+
+          <div class="row mb-18 mt-18">
+            <div class="col-md-3 clearfix d-none d-md-block">
+              <div class="card mb-2 mt-2">
+                <img class="card-img-top" src="{% static 'img/offer/paratha.png' %}"
+            alt="Card image cap">
+              </div>
+            </div>
+
+            <div class="col-md-3 clearfix d-none d-md-block">
+              <div class="card mb-2 mt-2">
+                <img class="card-img-top" src="{% static 'img/offer/cozinha-cake.png' %}"
+                  alt="Card image cap">
+              </div>
+            </div>
+
+            <div class="col-md-3 clearfix d-none d-md-block">
+              <div class="card mb-2 mt-2">
+                <img class="card-img-top" src="{% static 'img/offer/festive.png' %}"
+                alt="Card image cap">
+              </div>
+            </div>
+
+
+            <div class="col-md-3 clearfix d-none d-md-block">
+              <div class="card mb-2 mt-2">
+                <img class="card-img-top" src="{% static 'img/offer/first-five.png' %}"
+                  alt="Card image cap">
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!--/.First slide-->
+
+        <!--Second slide-->
+        <div class="carousel-item" style="margin-top: 20px; margin-bottom: 20px;">
+
+          <div class="row mb-18 mt-18">
+            <div class="col-md-3 clearfix d-none d-md-block">
+              <div class="card mb-2 mt-2">
+                <img class="card-img-top" src="{% static 'img/offer/food-heaven.png' %}"
+            alt="Card image cap">
+              </div>
+            </div>
+
+            <div class="col-md-3 clearfix d-none d-md-block">
+              <div class="card mb-2 mt-2">
+                <img class="card-img-top" src="{% static 'img/offer/kitchen-ette.png' %}"
+                  alt="Card image cap">
+              </div>
+            </div>
+
+            <div class="col-md-3 clearfix d-none d-md-block">
+              <div class="card mb-2 mt-2">
+                <img class="card-img-top" src="{% static 'img/offer/cozinha-1.png' %}"
+                alt="Card image cap">
+              </div>
+            </div>
+            
+            <div class="col-md-3 clearfix d-none d-md-block">
+              <div class="card mb-2 mt-2">
+                <img class="card-img-top" src="{% static 'img/offer/punjabi.png' %}"
+                  alt="Card image cap">
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!--/.Second slide-->
+      </div>
+      <!--/.Slides-->
+    </div>
+    <!--/.Carousel Wrapper-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</div>
+      
+
+
+<div class="container" style="position: relative;">
+    <div class="row">
+        <h2>Popular Restaurant near by you</h2>
+    </div>
+
+    <div class="row">
+      <div class="col-md-9">
+          <div class="row mt-3">
+              {% for x in shop %}
+              <div class="col-md-4 mb-4">
+                
+                  <div class="m-1">
+                      <a href="{% url 'shops' x.id %}" style="text-decoration: none;color:black">
+                          <div class="card view overlay" style="width: 100%">
+                              <img src="{{x.simage.url}}" class="card-img-top img-fluid" alt="...">
+                              <div class="card-body py-1 mask flex-center rgba-white-strong">
+                                <p class="mb-0" style="font-size:90%; margin-top: 80px;">{{x.sdesp}}</p>
+                              </div>
+
+                          </div>
+                          <div class="card">
+                              <div class="ml-3">
+                              <p class="card-text mb-0" style="font-size:130%">{{x.sname}}</p>
+                              <p class="mb-0" style="font-size:90%">{% for y in x.scategory.all %}{{y.category}} | {% endfor %}</p>
+                              <p class="mb-0">{{x.savgtime}} min</p>
+                          </div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+                {% endfor %}
+          </div>
+      </div>
+      <div class="col-md-3 sticky" style="margin-right: -10px;">
+        <div class="container static-header sticky"
+                style="border: 1px solid rgb(214, 209, 209);">
+            <img src="{% static 'img/chef.webp' %}" alt="img" height="196px" width="221px" style="margin-top:-40px;">
+            <div class="cart-footer">
+              Good food is always cooking! Go ahead, order some yummy items from the menu.
+            </div>
+        </div>
+    </div>
+     
+    </div>
+</div>
+
+<br />
+<br />
+
+<div class="container" style="background-color: rgb(248, 248, 255);">
+  <h2 class="p-4" >Meet Out Team</h2>
+    <div class="row mb-5 p-1">
+      
+        <div class="col-md-4" style="height: 200px;">
+          <div align="center">
+          <img src="{% static 'img/admin/admin1.jpg' %}" height="200px" width="200px" style="border-radius:50%;">
+          <h5>Rakesh</h5>
+          <p>Quality Analyst</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div align="center">
+          <img src="{% static 'img/admin/admin2.jpg' %}" height="200px" width="200px" style="border-radius:50%;">
+          <h5>XYZ name</h5>
+          <p>XYZ engineer</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div align="center">
+          <img src="{% static 'img/admin/adminn3.jpg' %}" height="200px" width="200px" style="border-radius:50%;">
+          <h5>XYZ name</h5>
+          <p>XYZ engineer</p>
+          </div>
+        </div>
+
+    </div>
+    <div class="row mb-5 p-1">
+      
+      <div class="col-md-6 ">
+        <div align="center">
+        <img src="{% static 'img/admin/admin4.jpg' %}" height="200px" width="200px" style="border-radius:50%;">
+        <h5>XYZ name</h5>
+        <p>XYZ engineer</p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div align="center">
+        <img src="{% static 'img/admin/admin5.jpg' %}" height="200px" width="200px" style="border-radius:50%;">
+        <h5>XYZ name</h5>
+        <p>XYZ engineer</p>
+        </div>
+      </div>
+
+  </div>
+
+    
+</div>
+<br><br>
+
+{% endblock %}

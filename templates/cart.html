@@ -1,0 +1,83 @@
+{% extends 'main.html' %}
+
+{% load cart %}
+{% load static %}
+{% load count_quantity %}
+{% load multiplied %}
+{% load carttotal %}
+
+{% block content %}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Cart</h3>
+        </div>
+    </div>
+    {% cart request as item %}
+    <div class="row mt-3">
+        {% if item %}
+        <div class="col-md-6" style="width: 200px; height: 350px; overflow: auto; border: 1px solid rgb(223, 218, 218); border-radius: 4px; box-shadow:2px 2px 3px 3px rgb(247, 243, 243);"> 
+            {% for x in item %}
+            {% count_quantity request x.product.id as total %}
+            {% multiplied x.product.pprice total as count_total_price %}
+            <div style="width: 100%">
+                <div class="card-body py-1 p-3">
+                    <div class="media">
+                        <img src="{{x.product.pimage.url}}" width="100px" class="mr-3" alt="...">
+                        <a href="{% url 'cart' %}" style="text-decoration: none; color: black;">
+                        <div class="media-body">
+                            <br>
+                            <h5 class="mt-0 mb-0">{{x.product}}</h5>   
+                            <p class="mb-0"><span style="margin-right: 0px;" id="all_{{x.product.id}}">{{count_total_price}}</span> ₹</p>
+                        </div>
+                        </a>
+                    </div>
+                    <a href="{% url 'cart' %}" style="text-decoration: none; color: black;">
+                    <div class="btn-group btn-group-sm m-0 my-2" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-primary minus" data-id="{{x.product.id}}">-</button>
+                        <div id="val_{{x.product.id}}" class="mt-2 mr-1">{{total}} </div> 
+                        <button type="button" class="btn btn-primary plus" data-id="{{x.product.id}}">+</button>
+                    </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="col-md-6"> 
+            <div class="card" style="width: 100%">
+                <div class="card-body py-1 p-3">
+                    <p>Bill Details</p>
+                    <hr>
+                    <p class="mb-0">{% carttotal request as allcarttotal %}Item Total: {{allcarttotal}}</p>
+                    <!-- <p class="mb-0">Restaurant Charges: 25</p>
+                    <p class="mb-0">Delivery Fee: 50</p> -->
+                    <hr>
+                    <form>
+                        <input type="text" id="lname" name="lname" value="Birthday50" style="border: 1px solid grey; padding: 6px; border-radius: 4px;">
+                        <button type="button" class="btn m-0 btn-success btn-md">Apply Coupon</button>
+                    </form>
+                    <p class="mb-0" style="font-size:120%"><b>Total: 50<b></p>
+                    <button type="button" class="btn m-0 mt-2 btn-primary btn-md btn-block">Pay and Order</button>
+                </div>
+            </div>
+        </div>
+        {% else %}        
+        <div class="empty-cart" style="margin:auto; margin-bottom: 180px;">
+            <center> 
+                <img src="{% static 'img/empty-cart-image.png' %}" alt="img" height="240px" width="250px;" style="margin: auto;">
+                <br><br><br>
+                <article>  
+                
+                    <h4> Your Cart is Empty</h4>
+                    <p>You can go to home page to view more restaurants</p>                            
+                <a class="btn btn-primary" href="{% url 'index' %}">See restaurants near you</a>
+            </center>
+        </article>
+        </div>         
+        {% endif %}            
+    </div>
+</div>
+
+
+{% endblock %}

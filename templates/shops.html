@@ -1,0 +1,125 @@
+{% extends 'main.html' %}
+
+{% load count_quantity %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid" style="background:#171A29">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container">
+                <div class="row py-5 align-items-center">
+                    <div class="col-md-3">
+                        <img src="{{data.0.pshop.simage.url}}" width="100%" alt="" srcset="">
+                    </div>
+
+                    <div class="col-md-9">
+                        <p class="mb-0" style="font-size:160%;color:white">{{data.0.pshop}}</p>
+                        <p class="mb-0" style="font-size:80%;color: #e0e0e0;">{% for x in data.0.pshop.scategory.all %} {{x}}, {% endfor %}</p>
+                        <p class="mb-0" style="font-size:90%;color: #e0e0e0;">{{data.0.pshop.saddress}}</p>
+                        <table class="" style="font-size:160%;color:white;width: 80%;">
+                            <tr>
+                                <td>4+ Star</td>
+                                <td>{{data.0.pshop.savgtime}} Min</td>
+                                <td>450/- Cost for two</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--End of Shop Container-->
+<br />
+<!--Main container of manu-->
+<div class="container" style="position: relative;">
+        <div class="row">
+            <h2>Menu</h2>
+        </div>
+    
+        <div class="row">
+          <div class="col-md-9">
+              <div class="row mt-3">
+                  {% for x in data %}
+                  <div class="col-md-4 mb-4">
+                    
+                    <div class="m-1">
+                        <div class="card" style="width: 100%" >
+                            <img src="{{x.pimage.url}}" class="card-img-top img-fluid" alt="..." style="height: 160px;"> 
+                            <div class="card">
+                                <div class="ml-3">
+                                    <p class="card-text mb-0" style="font-size:130%">{{x.pname}}</p>
+                                    <p class="mb-0" style="font-size:90%">{% for y in x.pcategory.all %}{{y.category}} | {% endfor %}</p>
+                                    <p class="mb-0">{{x.pprice}} ₹</p>
+                                    <div class="btn-group btn-group-sm m-0 my-2" role="group" aria-label="Basic example">
+                                        <button class="btn btn-primary minus" data-id="{{x.id}}" type="button">-</button>
+                                        {% count_quantity request x.id as total %}
+                                        <div id="val_{{x.id}}" class="mt-2 mr-1">{{total}}</div>                   
+                                        <button class="btn btn-primary plus" type="button" data-id="{{x.id}}"> + </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                    {% endfor %}
+              </div>
+          </div>
+          <div class="col-md-3 sticky" style="margin-right: -10px;">
+            <div class="container static-header sticky"
+                    style="border: 1px solid rgb(214, 209, 209);">
+                <img src="{% static 'img/chef4.jpg' %}" alt="img" height="196px" width="221px" style="margin-top:-40px;">
+                <div class="cart-footer">
+                  Go ahead, order some yummy items from the menu.
+                </div>
+            </div>
+        </div>
+          <!-- <div class="col-md-3 sticky" style="opacity: 0.7; margin-right: -10px;">
+            <div class="container static-header background-side sticky"
+                    style="border: 1px solid rgb(233, 227, 227);" id="loadingdiv">
+                
+                {% if item %}
+                  <div>
+                    <h2 style="font-weight: bold; margin-top: -90px;">Cart</h2>
+                  </div>
+                  {% for x in item %}
+                    <div class="media">
+                      <img src="{{x.product.pimage.url}}" width="80px" class="mr-3" alt="...">
+                      <div class="media-body">
+                          <h5 class="mt-0 mb-0">{{x.product}}</h5>
+                          <p class="mb-0" style="font-size:90%">South Indian</p>
+                          <p class="mb-0">45min | 450/-</p> -->
+                          <!-- {{x.quantity}} X {{x.product.pprice}}  -->
+                          
+                      <!-- </div>
+                    </div> -->
+                  <!-- {% endfor %}
+                {% else %}
+                  <div>
+                    <h2 style="font-weight: bold; margin-top: -90px;">Empty Cart</h2>
+                  </div>
+                  <img src="{% static 'img/offer/empty-cart.png' %}" alt="img" height="196px" width="230px;" style="margin-top: 62px;">
+                  <div class="cart-footer">
+                    Good food is always cooking! Go ahead, order some yummy items from the menu.
+                  </div> -->
+              <!-- {% endif %}
+            </div> -->
+        </div>
+    </div>
+</div>
+
+    <!--End of Main Container-->
+    <br />
+    <br />
+
+
+ 
+
+{% endblock %}
+
+
+
+
